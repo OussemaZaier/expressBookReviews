@@ -25,13 +25,13 @@ public_users.get("/", function (req, res) {
     if (books) {
       resolve();
     } else {
-      reject("There are no books in the list!");
+      reject("no books yet in the database");
     }
   });
 
   getBookList.then(
     () => {
-      return res.json(books);
+      return res.status(200).json(books);
     },
     (msg) => {
       return res.status(404).json({ message: msg });
@@ -65,7 +65,7 @@ public_users.get("/author/:author", function (req, res) {
     if (author) {
       resolve(author);
     } else {
-      reject(`Error author!`);
+      reject(`Error!`);
     }
   });
 
